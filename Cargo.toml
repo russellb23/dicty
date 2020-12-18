@@ -1,0 +1,13 @@
+[package]
+name = "dicsyn"
+version = "0.1.0"
+authors = ["russellb <bertrussell23@yahoo.in>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = "0.10.10"
+select = "*"
+tokio = { version = "0.2", features = ["macros", "tcp", "dns", "io-util"] }
+argh = "*"
