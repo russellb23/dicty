@@ -24,8 +24,13 @@ pub async fn get_meaning(s: &str, n: usize) -> Result<Vec<String>> {
     let document = Document::from(body.as_str());
 
     // Find the class correspond to the meaning
-    for node in document.find(Class("ds-list")).take(n) {
-        meaning.push(node.text());
+    // pseg class has all the meanings
+    // It's children are the meanings for the word
+    for node in document.find(Class("pseg")).take(n) {
+        let mm = node.children();
+        for meang in mm {
+            meaning.push(meang.text());
+        }
     }
 
     // Return the Vector of Meaning Strings

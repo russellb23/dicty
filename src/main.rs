@@ -4,19 +4,21 @@
 // bertrussell23@yahoo.in
 // Version: 0.1.0
 // TODO:
-//      1. Receive inputs as arguments [DONE: Dec 18th 2020, 18::56]
+//      1. Receive inputs as arguments
+//      [DONE: Dec 18th 2020, 18::56]
 //      2. Choose different dictionary sites: Wikictionary, Mariam-Webster etc.,
 //      3. Improve text processing to show noun, verb, adjective etc.,
+//      [DONE: Dec 19th 2020, 10:07:31]
 //      4. Highlight colours on the terminal! (possibly for aesthetics)
 
 //extern crate clap;
-extern crate dicsyn;
+extern crate dicty;
 
 //use clap::{App, Arg};
 
 //use argh::FromArgs;
-use dicsyn::get_meaning;
-use dicsyn::help;
+use dicty::get_meaning;
+use dicty::help;
 use std::env;
 
 //#[derive(FromArgs)]
