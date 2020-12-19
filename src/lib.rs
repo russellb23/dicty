@@ -29,7 +29,25 @@ pub async fn get_meaning(s: &str, n: usize) -> Result<Vec<String>> {
     for node in document.find(Class("pseg")).take(n) {
         let mm = node.children();
         for meang in mm {
-            meaning.push(meang.text());
+            if meang.text() == "n." {
+                meaning.push("Noun".to_string());
+            } else if meang.text() == "v." {
+                meaning.push("Verb".to_string());
+            } else if meang.text() == "tr." {
+                meaning.push("Transitive".to_string());
+            } else if meang.text() == "adj." {
+                meaning.push("Adjective".to_string());
+            } else if meang.text() == "adv." {
+                meaning.push("Adverb".to_string());
+            } else if meang.text() == " " {
+                meang;
+            } else if meang.text() == "intr." {
+                meaning.push("Intransitive".to_string());
+            } else if meang.text() == ", " {
+                meang;
+            } else {
+                meaning.push(meang.text());
+            }
         }
     }
 
