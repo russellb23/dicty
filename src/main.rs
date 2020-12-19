@@ -73,8 +73,8 @@ fn main() {
 
     let meaning = get_meaning(&kword, num.clone());
 
-    println!("Meaning(s):\n");
+    //println!("Meaning(s):\n");
     for synon in &meaning.unwrap() {
-        println!("{:?}\n", synon);
+        println!("{:?}", synon);
     }
 }

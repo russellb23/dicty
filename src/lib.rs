@@ -35,16 +35,20 @@ pub async fn get_meaning(s: &str, n: usize) -> Result<Vec<String>> {
                 meaning.push("Verb".to_string());
             } else if meang.text() == "tr." {
                 meaning.push("Transitive".to_string());
+            } else if meang.text() == "tr.v." {
+                meaning.push("Transitive Verb".to_string());
+            } else if meang.text() == "intr.v." {
+                meaning.push("Intransitive Verb".to_string());
             } else if meang.text() == "adj." {
                 meaning.push("Adjective".to_string());
             } else if meang.text() == "adv." {
                 meaning.push("Adverb".to_string());
             } else if meang.text() == " " {
-                meang;
+                meaning = meaning;
             } else if meang.text() == "intr." {
                 meaning.push("Intransitive".to_string());
             } else if meang.text() == ", " {
-                meang;
+                meaning = meaning;
             } else {
                 meaning.push(meang.text());
             }
