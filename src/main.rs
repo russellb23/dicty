@@ -11,12 +11,9 @@
 //      [DONE: Dec 19th 2020, 10:07:31]
 //      4. Highlight colours on the terminal! (possibly for aesthetics)
 
-//extern crate clap;
 extern crate dicty;
 
-//use clap::{App, Arg};
-
-//use argh::FromArgs;
+use colored::Colorize;
 use dicty::get_meaning;
 use dicty::help;
 use std::env;
@@ -73,8 +70,35 @@ fn main() {
 
     let meaning = get_meaning(&kword, num.clone());
 
-    //println!("Meaning(s):\n");
     for synon in &meaning.unwrap() {
-        println!("{:?}", synon);
+        match synon.as_str() {
+            "Verb" => {
+                println!("{}", synon.to_owned().italic().bold().yellow());
+            }
+            "Transitive" => {
+                println!("{}", synon.to_owned().italic().bold().magenta());
+            }
+            "Intransitive" => {
+                println!("{}", synon.to_owned().italic().bold().cyan());
+            }
+            "Noun" => {
+                println!("{}", synon.to_owned().italic().bold().blue());
+            }
+            "Adjective" => {
+                println!("{}", synon.to_owned().italic().bold().green());
+            }
+            "Adverb" => {
+                println!("{}", synon.to_owned().italic().bold().purple());
+            }
+            "Intransitive Verb" => {
+                println!("{}", synon.to_owned().italic().bold().red());
+            }
+            "Transitive Verb" => {
+                println!("{}", synon.to_owned().italic().bold().red());
+            }
+            _ => {
+                println!("{}\n", synon);
+            }
+        }
     }
 }

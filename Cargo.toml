@@ -1,5 +1,5 @@
 [package]
-name = "dicsyn"
+name = "dicty"
 version = "0.1.0"
 authors = ["russellb <bertrussell23@yahoo.in>"]
 edition = "2018"
@@ -10,4 +10,5 @@ edition = "2018"
 reqwest = "0.10.10"
 select = "*"
 tokio = { version = "0.2", features = ["macros", "tcp", "dns", "io-util"] }
-argh = "*"
+http = "0.2"
+colored = "2.0"
