@@ -18,21 +18,7 @@ use dicty::get_meaning;
 use dicty::help;
 use std::env;
 
-//#[derive(FromArgs)]
-///// Command Line arguments parsing
-//struct Opts {
-//    /// get meaning for this word
-//    #[argh(short = 'w', option)]
-//    word: String,
-//
-//    /// get this many meanings, if available
-//    #[argh(short = 'n', option)]
-//    n: usize,
-//}
-
 fn main() {
-    //println!("Welcome to the dictionary CLI!");
-
     let args: Vec<String> = env::args().collect();
     let mut kword: String = String::new();
     // Setting default 2
