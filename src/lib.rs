@@ -1,6 +1,7 @@
 extern crate reqwest;
 extern crate select;
 
+use colored::Colorize;
 use http::StatusCode;
 use reqwest::Result;
 use select::document::Document;
@@ -46,11 +47,11 @@ pub async fn get_meaning(s: &str, n: usize) -> Result<Vec<String>> {
                     } else if meang.text() == "adv." {
                         meaning.push("Adverb".to_string());
                     } else if meang.text() == " " {
-                        meang;
+                        meaning = meaning;
                     } else if meang.text() == "intr." {
                         meaning.push("Intransitive".to_string());
                     } else if meang.text() == ", " {
-                        meang;
+                        meaning = meaning;
                     } else if meang.text() == "tr.v." {
                         meaning.push("Transitive Verb".to_string());
                     } else {
@@ -70,10 +71,42 @@ pub fn help() {
     println!("Usage:\ndicsyn <key_word> <num_of_meanings>(optional)");
 }
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+/// Display the meaning(s) of the queried word as a Vec<String> encapsultaed in Result
+pub fn disp_meaning(meaning: Result<Vec<String>>) {
+    let meanings: Vec<String> = match meaning {
+        Ok(vec_val) => vec_val,
+        Err(_) => panic!("Verify the keyword for any spelling or grammar mistakes"),
+    };
+
+    for synon in meanings {
+        match synon.as_str() {
+            "Verb" => {
+                println!("{}", synon.to_owned().italic().bold().yellow());
+            }
+            "Transitive" => {
+                println!("{}", synon.to_owned().italic().bold().magenta());
+            }
+            "Intransitive" => {
+                println!("{}", synon.to_owned().italic().bold().cyan());
+            }
+            "Noun" => {
+                println!("{}", synon.to_owned().italic().bold().blue());
+            }
+            "Adjective" => {
+                println!("{}", synon.to_owned().italic().bold().green());
+            }
+            "Adverb" => {
+                println!("{}", synon.to_owned().italic().bold().purple());
+            }
+            "Intransitive Verb" => {
+                println!("{}", synon.to_owned().italic().bold().red());
+            }
+            "Transitive Verb" => {
+                println!("{}", synon.to_owned().italic().bold().red());
+            }
+            _ => {
+                println!("{}\n", synon);
+            }
+        }
     }
 }

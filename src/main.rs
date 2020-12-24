@@ -13,7 +13,8 @@
 
 extern crate dicty;
 
-use colored::Colorize;
+//use colored::Colorize;
+use dicty::disp_meaning;
 use dicty::get_meaning;
 use dicty::help;
 use std::env;
@@ -55,36 +56,37 @@ fn main() {
     }
 
     let meaning = get_meaning(&kword, num.clone());
+    disp_meaning(meaning);
 
-    for synon in &meaning.unwrap() {
-        match synon.as_str() {
-            "Verb" => {
-                println!("{}", synon.to_owned().italic().bold().yellow());
-            }
-            "Transitive" => {
-                println!("{}", synon.to_owned().italic().bold().magenta());
-            }
-            "Intransitive" => {
-                println!("{}", synon.to_owned().italic().bold().cyan());
-            }
-            "Noun" => {
-                println!("{}", synon.to_owned().italic().bold().blue());
-            }
-            "Adjective" => {
-                println!("{}", synon.to_owned().italic().bold().green());
-            }
-            "Adverb" => {
-                println!("{}", synon.to_owned().italic().bold().purple());
-            }
-            "Intransitive Verb" => {
-                println!("{}", synon.to_owned().italic().bold().red());
-            }
-            "Transitive Verb" => {
-                println!("{}", synon.to_owned().italic().bold().red());
-            }
-            _ => {
-                println!("{}\n", synon);
-            }
-        }
-    }
+    //for synon in &meaning.unwrap() {
+    //    match synon.as_str() {
+    //        "Verb" => {
+    //            println!("{}", synon.to_owned().italic().bold().yellow());
+    //        }
+    //        "Transitive" => {
+    //            println!("{}", synon.to_owned().italic().bold().magenta());
+    //        }
+    //        "Intransitive" => {
+    //            println!("{}", synon.to_owned().italic().bold().cyan());
+    //        }
+    //        "Noun" => {
+    //            println!("{}", synon.to_owned().italic().bold().blue());
+    //        }
+    //        "Adjective" => {
+    //            println!("{}", synon.to_owned().italic().bold().green());
+    //        }
+    //        "Adverb" => {
+    //            println!("{}", synon.to_owned().italic().bold().purple());
+    //        }
+    //        "Intransitive Verb" => {
+    //            println!("{}", synon.to_owned().italic().bold().red());
+    //        }
+    //        "Transitive Verb" => {
+    //            println!("{}", synon.to_owned().italic().bold().red());
+    //        }
+    //        _ => {
+    //            println!("{}\n", synon);
+    //        }
+    //    }
+    //}
 }
