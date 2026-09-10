@@ -13,7 +13,7 @@
 
 extern crate dicty;
 
-//use colored::Colorize;
+use colored::Colorize;
 use dicty::disp_meaning;
 use dicty::get_meaning;
 use dicty::help;
@@ -56,7 +56,7 @@ fn main() {
     }
 
     let meaning = get_meaning(&kword, num.clone());
-    disp_meaning(meaning);
+    // disp_meaning(meaning);
 
     for synon in &meaning.unwrap() {
         match synon.as_str() {
