@@ -47,11 +47,11 @@ pub async fn get_meaning(s: &str, n: usize) -> Result<Vec<String>> {
                     } else if meang.text() == "adv." {
                         meaning.push("Adverb".to_string());
                     } else if meang.text() == " " {
-                        meaning = meaning;
+                        // meaning = meaning;
                     } else if meang.text() == "intr." {
                         meaning.push("Intransitive".to_string());
                     } else if meang.text() == ", " {
-                        meaning = meaning;
+                        // meaning = meaning;
                     } else if meang.text() == "tr.v." {
                         meaning.push("Transitive Verb".to_string());
                     } else {
